@@ -1,0 +1,11 @@
+<div>
+    <h1> login </h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{form}}
+
+        <button type="submit">login</button>
+    </form>
+
+</div>

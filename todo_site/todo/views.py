@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.contrib import messages
 from django.http import HttpResponseRedirect
+from django.contrib.auth.forms import UserCreationForm
+from django.views.generic import CreateView
+
 
 from .models import Todo
 from .forms import TodoForm
@@ -26,3 +29,8 @@ def remove(request,itemID):
     item.delete()
     messages.info(request,"item removed")
     return HttpResponseRedirect(reverse('todo'))
+
+class Registration(CreateView):
+    form_class=UserCreationForm
+    template_name='registration/register.html'
+    success_url='acc/login'
